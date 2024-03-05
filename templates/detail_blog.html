@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block title %} {{ blog.title }} {% endblock %}
+
+{% block content %}
+    
+        <p>{{ blog.title }}</p>
+        <p>{{ blog.description }}</p>
+        {% if blog.image %}
+            <img src="{{ blog.image.url }}">
+        {% endif %}
+        <p>{{ blog.created_at }}</p>
+        <p>{{ blog.updated_at }}</p>
+        <p>{{ blog.author }}</p>
+        <p>{{ blog.category }}</p>
+<hr>
+    {% if request.user == blog.author %}
+    <p><a href="{% url 'app:edit' blog.slug %}">Edit</a></p>
+    {% endif %}
+
+    <hr>
+    <div class="row">
+    <div class="col-6">
+        <form method="post">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit">Save</button>
+        </form>
+    </div>
+    <div class="col-6">
+        {% for comment in blog.comments_set.all %}
+            <p>{{ comment.text }}</p>
+            <p>{{ comment.author }}</p>
+        {% endfor %}
+    </div>
+
+    </div>
+
+{% endblock %}
