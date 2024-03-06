@@ -9,17 +9,17 @@ class LoginForm(forms.Form):
     phone = forms.CharField(max_length=100)
     password = forms.CharField(max_length=100, widget=forms.PasswordInput)
 
-class SignupForm(UserCreationForm):
-    username = forms.CharField(max_length=100, error_messages={'exists': 'Username is already exists.'})
-    class Meta:
-        model = User
-        fields = ('email', 'password1')
-
-        widgets = {
-            'username': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.TextInput(attrs={'class': 'form-control'}),
-            # 'password1': forms.PasswordInput(attrs={'class': 'form-control'}),
-        }
+# class SignupForm(UserCreationForm):
+#     username = forms.CharField(max_length=100, error_messages={'exists': 'Username is already exists.'})
+#     class Meta:
+#         model = User
+#         fields = ('email', 'password1')
+#
+#         widgets = {
+#             'username': forms.TextInput(attrs={'class': 'form-control'}),
+#             'email': forms.TextInput(attrs={'class': 'form-control'}),
+#             # 'password1': forms.PasswordInput(attrs={'class': 'form-control'}),
+#         }
 
 class BlogForm(forms.ModelForm):
     class Meta:

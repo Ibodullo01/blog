@@ -5,7 +5,7 @@ from django.views import View
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 
 from app.forms import BlogForm
-from app.models import Blog
+from app.models import Blog, User
 
 
 # class CreateBlogView(View):
@@ -24,6 +24,8 @@ from app.models import Blog
 #             blog.author = request.user
 #             blog.save()
 #         return redirect(reverse('app:home'))
+
+
 
 class HomePageView(ListView):
     # model = Blog

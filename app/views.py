@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.urls import reverse
 
 from app.models import Blog
-from .forms import BlogForm, LoginForm, SignupForm, CommentForm
+from .forms import BlogForm, LoginForm, CommentForm
 
 
 def home(request):
@@ -27,14 +27,14 @@ def login_view(request):
     return render(request, 'login.html', {'form': form})
 
 
-def signup_view(request):
-    form = SignupForm()
-    if request.method == "POST":
-        form = SignupForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect(reverse('app:login'))
-    return render(request, 'sign_up.html', {'form': form})
+# def signup_view(request):
+#     form = SignupForm()
+#     if request.method == "POST":
+#         form = SignupForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect(reverse('app:login'))
+#     return render(request, 'sign_up.html', {'form': form})
 
 def logout_view(request):
     logout(request)
