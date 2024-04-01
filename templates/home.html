@@ -5,7 +5,11 @@
 
 {% block content %}
     <h1>{{ text }}</h1>
-    {% for blog in blogs %}
-        <p><a href="{% url 'app:detail' blog.id %}">{{ blog.title }}</a></p>
-    {% endfor %}
+    {% if user.is_authenticated %}
+        {% for blog in blogs %}
+            <p><a href="{% url 'app:detail' blog.id %}">{{ blog.title }}</a></p>
+        {% endfor %}
+    {% else %}
+         <h1 style="text-align: center ; color: red">Siz avval Login qiling !!!</h1>
+    {% endif %}
 {% endblock %}
